@@ -7,29 +7,38 @@ import org.junit.jupiter.api.Test;
 
 class IntroTest {
 
-	int number = 1256987;
+	final int number = 1256987;
+	
+	final long numberForBit = 0x3ab7f5;
 	
 	@Test
-	void test() {
+	void testForDigitsInNumber() {
 		
-	assertEquals(1, getAllDigits(number).get(6));
-	assertEquals(9, getAllDigits(number).get(2));
+	assertEquals(1, DigitsService.getAllDigits(number).get(6));
+	assertEquals(9, DigitsService.getAllDigits(number).get(2));
 		
 		}
 	
+	@Test
+	void getBitValueTest () {
 	
-	public List<Integer> getAllDigits (int number) {
-		
-		List<Integer> digits = new ArrayList<>();
-		
-		for (int i = 1; number>0; i++) {
-			
-			int difer = number % (int)Math.pow(10, i);
-			
-			digits.add(difer/(int)Math.pow(10, i-1));
-		
-			number = number - difer;
+		assertEquals(1, BitOperations.getBitValue(numberForBit, 5));
+		assertEquals(0, BitOperations.getBitValue(numberForBit, 11));
+		assertEquals(0, BitOperations.getBitValue(numberForBit, 1));
+		assertEquals(1, BitOperations.getBitValue(numberForBit, 2));		
 	}
-		return digits;
-}
+	
+	@Test
+	void setBitValueTest () {
+		
+		assertEquals(0x3ab7f5, BitOperations.setBitValue(numberForBit, 5, 1));
+		assertEquals(0x3ab7d5, BitOperations.setBitValue(numberForBit, 5, 0));
+	}
+	
+	@Test
+	void replaceBitValueTest () {
+		
+		assertEquals(0x3ab7d5, BitOperations.replaceBitValue(numberForBit, 5));
+		assertEquals(0x3ab7f4, BitOperations.replaceBitValue(numberForBit, 0));
+	}
 }
