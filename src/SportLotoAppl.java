@@ -7,18 +7,17 @@ public class SportLotoAppl {
 	 * no additional collections / arrays
 	 */
 	public static void main(String[] args) {
-//	long resNumber = 0;
-//	int newNumber = 0;
-//	int counter = 0;
-//  		while (counter < 6) {
-//			newNumber = getRandomInt(1, 49);
-//			if (!isPresentDigit (resNumber, newNumber)) {
-//				resNumber =  resNumber*100 + newNumber;	
-//				System.out.print(newNumber + " ");
-//				counter++;
-//			}	
-//		}
-	lotoViaBitOperations();
+	long resNumber = 0;
+	int newNumber = 0;
+	int counter = 0;
+  		while (counter < 6) {
+			newNumber = getRandomInt(1, 49);
+			if (!isPresentDigit (resNumber, newNumber)) {
+				resNumber =  resNumber*100 + newNumber;	
+				System.out.print(newNumber + " ");
+				counter++;
+			}	
+		}
 	}
 	
 	public static int getRandomInt(int min, int max) {

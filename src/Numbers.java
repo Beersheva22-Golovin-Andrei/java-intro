@@ -32,5 +32,30 @@ public class Numbers {
 		}
 		return sum;		
 	}
+	
+	public static int getSumDigits(int number) {
+		int res = 0;
+		do {
+			res += number % 10;
+			number /= 10;
+		} while (number != 0);
+		return res;
+	}
+	
+	public static int[] getDigits(int number) {
+		int res[] = new int[getNdigits(number)];
+		for(int i = res.length - 1; i >= 0; i--) {
+			res[i] = number % 10;
+			number /= 10;
+		}
+		return res;
+	}
+	public static int getNumberFromDigits(int[] digits) {
+		int res = 0;
+		for(int i = 0; i < digits.length; i++) {
+			res = res * 10 + digits[i];
+		}
+		return res;
+	}
 	}
 
