@@ -12,9 +12,12 @@ public class IsraelIdentity {
 	 * example, 123456782 => 1 + 4(2 * 2) + 3 + 8(4 * 2) +5 + 3 (6 * 2 = 12 => 1 + 2) + 7 + 7 (8 * 2=16=>1 + 6) + 2
 	 */
 		public static boolean verify(int id) {
+		return getSumForVerification (id)%10 == 0;
+	}
+		
+		public static int getSumForVerification (int id) {
 			int sum = 0;
 			boolean paritySign = true;
-	
 			for (int digit : Numbers.getDigits(id)) {
 				
 				if (paritySign) {
@@ -26,9 +29,9 @@ public class IsraelIdentity {
 					} else sum+=digit;
 				}
 				paritySign=!paritySign;				
-			}		
-		return sum%10 == 0;
-	}
+			}
+			return sum;
+		}
 		
 	
 	/**
@@ -42,10 +45,12 @@ public class IsraelIdentity {
 			do {
 				counter = 0;
 				resNumber = SportLotoAppl.getRandomInt(10000000,99999999);
-				resNumber = resNumber*10 + (10 - Numbers.getSumDigits(resNumber)%10);
+				resNumber = resNumber*10 + (10 - getSumForVerification (resNumber)%10);
 				counter++;
 			} while (!verify(resNumber) && counter<=9);
-	
+
 			return resNumber;
 		}
+		
+		
 }
