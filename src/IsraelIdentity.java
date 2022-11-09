@@ -40,13 +40,12 @@ public class IsraelIdentity {
 			int resNumber = 0;
 			int counter = 0;
 			do {
-				resNumber = SportLotoAppl.getRandomInt(1,9);
 				counter = 0;
-				for (int i=1; i<9; i++) {
-					resNumber = resNumber*10 + SportLotoAppl.getRandomInt(0,9);
-				}
+				resNumber = SportLotoAppl.getRandomInt(10000000,99999999);
+				resNumber = resNumber*10 + (10 - Numbers.getSumDigits(resNumber)%10);
 				counter++;
 			} while (!verify(resNumber) && counter<=9);
+	
 			return resNumber;
 		}
 }
