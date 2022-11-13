@@ -48,5 +48,68 @@ public class ArraysService {
 				
 		return resArray;
 	}
-
+	
+	/**
+	 * 
+	 * @param arraySorted
+	 * @param number
+	 * @return index value if number exists otherwise -1
+	 * O[N] - search number in unsorted array
+	 * O[LogN] - search number in sorted (binary search)
+	 */
+	public static int binarySearch(int arraySorted[], int number) {
+		int res;
+		int left = 0;
+		int right = arraySorted.length - 1;
+		int middle = right / 2;
+		while(left <= right && arraySorted[middle] != number) {
+			if (number < arraySorted[middle]) {
+				right = middle - 1;
+			} else {
+				left = middle + 1;
+			}
+			middle = (left + right)/2;
+		}
+		
+		if (left <= right) {
+			res = middle;
+			if (middle!=0 && arraySorted[middle-1]==number) {
+				for (int i =left; i<right; i++) {
+					if (arraySorted[i]==number) {
+						res = i;
+						break;
+					}
+				}
+			}		
+		} else {	
+			res=-(left+1);
+		}		
+		return res; 
+	}
+	
+	public static boolean isOneSwapForSorted (int[] arr) {
+		boolean res = false;
+		int[] comparArr = Arrays.copyOf(arr, arr.length);
+		Arrays.sort(comparArr);
+		int counter=0;
+		for (int i=0; i<arr.length; i++) {
+			if (comparArr[i] != arr[i]) counter ++;
+		}
+		if (counter==2)res = true;
+		return res;
+		
+	}
+	
+	public static int[] bubbleSort(int[]arr){
+	    for (int i = arr.length-1; i >= 1; i--){
+	        for (int j = 0; j < i; j++){
+	            if(arr[j] > arr[j + 1]) {
+	            	int temp = arr[j];
+	            	arr[j]=	arr[j+1];
+	            	arr[j+1]=temp;
+	            }
+	        }
+	    }
+	    return arr;
+	}
 }
