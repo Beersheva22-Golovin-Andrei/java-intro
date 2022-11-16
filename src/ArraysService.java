@@ -1,4 +1,8 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class ArraysService {
 	
@@ -58,12 +62,12 @@ public class ArraysService {
 	 * O[LogN] - search number in sorted (binary search)
 	 */
 	public static int binarySearch(int arraySorted[], int number) {
-		int res;
+		int res=0;
 		int left = 0;
 		int right = arraySorted.length - 1;
 		int middle = right / 2;
-		while(left <= right && arraySorted[middle] != number) {
-			if (number < arraySorted[middle]) {
+		while(left <= right && arraySorted[left] != number) {
+			if (number <= arraySorted[middle]) {
 				right = middle - 1;
 			} else {
 				left = middle + 1;
@@ -71,19 +75,7 @@ public class ArraysService {
 			middle = (left + right)/2;
 		}
 		
-		if (left <= right) {
-			res = middle;
-			if (middle!=0 && arraySorted[middle-1]==number) {
-				for (int i =left; i<right; i++) {
-					if (arraySorted[i]==number) {
-						res = i;
-						break;
-					}
-				}
-			}		
-		} else {	
-			res=-(left+1);
-		}		
+		
 		return res; 
 	}
 	
@@ -111,5 +103,56 @@ public class ArraysService {
 	        }
 	    }
 	    return arr;
+	}
+	
+	/**
+	 * 
+	 * @param array of short positive numbers
+	 * @param sum
+	 * @return true if array contains two numbers, sum of which equals a given sum
+	 */
+	static public boolean isSum2(short array[], short sum) {
+		
+		short first = array[0];
+		short second = array[1];
+		short intermidSum =(short) (first + second);
+		
+		short i = 2;
+		while (intermidSum!= sum && i<array.length) {
+			
+			if (intermidSum<sum) {
+				
+				if (array[i]>=first && first<=second) {
+					intermidSum=(short) (intermidSum-first+array[i]);
+					first = array[i];
+				} else if (array[i]>second && second<first){
+					intermidSum=(short) (intermidSum-second+array[i]);
+					second = array[i];
+				}
+					
+			} else {
+				if (array[i]<=first && first>=second) {
+					intermidSum=(short) (intermidSum-first+array[i]);
+					first = array[i];
+				} else if (array[i]<second && second>first){
+					intermidSum=(short) (intermidSum-second+array[i]);
+					second = array[i];
+				}
+			}
+			i++;
+		}	
+		return intermidSum== sum;
+	}
+	
+
+	static public boolean isSum2norm(short array[], short sum) {
+	Set<Short> set = new HashSet<>();
+		for (short i = 0; i<array.length; i++) {
+			if (set.contains((short) (sum-array[i]))) { 
+				return true;
+			}
+			set.add(array[i]);
+		}
+		return false;	
 	}
 }

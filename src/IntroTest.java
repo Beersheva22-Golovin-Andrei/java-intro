@@ -106,6 +106,7 @@ class IntroTest {
 	 }
 	 
 	 @Test
+	 @Disabled
 	 void isOneSwapTestFalse() {
 		 int ar1[] = { 1, 2, 3, 10, -1, 5, 6 };
 		 int ar2[] = { 1, 2, 3, 4, 5, 10 };
@@ -124,6 +125,7 @@ class IntroTest {
 
 	 }
 	 @Test
+	 @Disabled
 	 void isOneSwapTestTrue() {
 
 	 int ar1[] = { 10, 2, 3, 4, 1 };
@@ -141,6 +143,41 @@ class IntroTest {
 	 assertTrue(ArraysService.isOneSwapForSorted(ar6));
 	 assertTrue(ArraysService.isOneSwapForSorted(ar7));
 
+	 }
+	 
+	 @Test
+	 public void isSum2Test() {
+		assertTrue(ArraysService.isSum2 (new short[] {8,3,1,14,0,5,4,1,9}, (short) 2));
+	 	assertTrue(ArraysService.isSum2 (new short[] {3,5,8,5,7,7,4,12,6}, (short) 15));
+		assertTrue(ArraysService.isSum2 (new short[] { 1, 2, 8, 7, 3, 5, 2}, (short) 3));
+
+		assertTrue(ArraysService.isSum2 (new short[] { 4, 10, 8, 7, 7, 7, 1, 5, 3}, (short) 7));
+		assertTrue(ArraysService.isSum2 (new short[] { 1, 3, 8, 7, 2, 5, 2}, (short) 5));
+		assertTrue(ArraysService.isSum2 (new short[] { 1, 3, 5, 7, 5, 1, 2}, (short) 3));
+		
+		assertTrue(ArraysService.isSum2 (new short[] { 1, 2, 5, 7, 5, 1, 2}, (short) 10));
+		
+		
+		assertFalse(ArraysService.isSum2(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)10));
+		assertFalse(ArraysService.isSum2(new short[]{ 10, 10, 8, 3, 1, 5, 3}, (short)19));
+		assertFalse(ArraysService.isSum2(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)2));
+		
+		
+		
+		assertTrue(ArraysService.isSum2norm (new short[] {8,3,1,14,0,5,4,1,9}, (short) 2));
+	 	assertTrue(ArraysService.isSum2norm (new short[] {3,5,8,5,7,7,4,12,6}, (short) 15));
+		assertTrue(ArraysService.isSum2norm (new short[] { 1, 2, 8, 7, 3, 5, 2}, (short) 3));
+
+		assertTrue(ArraysService.isSum2norm (new short[] { 4, 10, 8, 7, 7, 7, 1, 5, 3}, (short) 7));
+		assertTrue(ArraysService.isSum2norm (new short[] { 1, 3, 8, 7, 2, 5, 2}, (short) 5));
+		assertTrue(ArraysService.isSum2norm (new short[] { 1, 3, 5, 7, 5, 1, 2}, (short) 3));
+		
+		assertTrue(ArraysService.isSum2norm (new short[] { 1, 2, 5, 7, 5, 1, 2}, (short) 10));
+		
+		
+		assertFalse(ArraysService.isSum2norm(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)10));
+		assertFalse(ArraysService.isSum2norm(new short[]{ 10, 10, 8, 3, 1, 5, 3}, (short)19));
+		assertFalse(ArraysService.isSum2norm(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)2));
 	 }
 	 
 	 
