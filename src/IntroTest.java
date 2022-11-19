@@ -146,6 +146,7 @@ class IntroTest {
 	 }
 	 
 	 @Test
+	 @Disabled
 	 public void isSum2Test() {
 		assertTrue(ArraysService.isSum2 (new short[] {8,3,1,14,0,5,4,1,9}, (short) 2));
 	 	assertTrue(ArraysService.isSum2 (new short[] {3,5,8,5,7,7,4,12,6}, (short) 15));
@@ -178,6 +179,42 @@ class IntroTest {
 		assertFalse(ArraysService.isSum2norm(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)10));
 		assertFalse(ArraysService.isSum2norm(new short[]{ 10, 10, 8, 3, 1, 5, 3}, (short)19));
 		assertFalse(ArraysService.isSum2norm(new short[]{ 4, 10, 8, 3, 1, 5, 3}, (short)2));
+	 }
+	 
+	 @Test
+	 @Disabled
+	 void anagramaTest() {
+		 
+		 assertTrue(Strings.isAnagram("asdtyrohfr", "asdtyrohfr"));
+		 assertTrue(Strings.isAnagram("asdtyrohfr", "asdtyrohfr"));
+		 assertTrue(Strings.isAnagram("sDDjkl mno", "lsDk jmnDo"));
+		 assertTrue(Strings.isAnagram("+-! /", "/+ -!"));
+		 
+		 assertFalse(Strings.isAnagram("asdtyrohfr", "asdtyrohf"));
+		 assertFalse(Strings.isAnagram("asdtyrohfr", "asdtyyohfr"));
+		 
+		
+				 String word = "loweyl";
+				 assertTrue(Strings.isAnagram(word, "elolyw"));
+				 assertTrue(Strings.isAnagram(word, "wolley"));
+				 assertTrue(Strings.isAnagram(word, "loleyw"));
+				 assertFalse(Strings.isAnagram(word,""));
+				 assertFalse(Strings.isAnagram(word, "yellob"));
+				 assertFalse(Strings.isAnagram(word,"yello"));
+				 assertFalse(Strings.isAnagram(word,"yelllo"));
+	 }
+	 
+	 
+	 @Test
+	 void sortStringNumbersTest(){
+		
+		 String [] arrIn = 	{"55","0", "5", "-5", "-117", "-9","-9", "47", "60","1","1","0"};
+		 String [] sortArr = {"-117", "-9", "-9", "-5", "0", "0", "1", "1", "5", "47", "55", "60" };
+		 Strings.sortStringNumbers(arrIn);
+		 
+		 for (int i =0; i<arrIn.length; i++) {
+			 assertEquals(arrIn[i], sortArr[i]);
+		 }
 	 }
 	 
 	 
