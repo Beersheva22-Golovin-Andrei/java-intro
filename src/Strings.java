@@ -64,4 +64,20 @@ public class Strings {
 				}
 			}	
 		}
+		
+		public static String javaNameExp() {
+			
+			return "[a-zA-Z$][\\w$]*|_[\\w$]+";
+		}
+		
+		
+		public static String ipV4Octet() {
+			return "^([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])$";
+		}
+		
+		
+		public static String ipV4() {
+			return "^(([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\.){3}([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])$";
+		}
+
 }
