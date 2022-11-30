@@ -166,6 +166,7 @@ public class Strings {
 			for (char c : expression.toCharArray()) {
 				if(c=='(') counter ++;
 				if(c==')') counter--;
+				if (counter<0) return false;
 			}
 			return counter==0;
 		}

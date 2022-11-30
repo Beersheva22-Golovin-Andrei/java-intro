@@ -1,3 +1,4 @@
+package core.intro;
 
 public class SportLotoAppl {
 

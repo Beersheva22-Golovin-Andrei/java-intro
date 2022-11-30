@@ -1,3 +1,4 @@
+package core.intro;
 import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
